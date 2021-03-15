@@ -1,0 +1,79 @@
+"
+" ~/.vimrc
+" dczheng
+" created 2019-07-25
+"
+
+set nocompatible
+set nospell
+set nu
+set cursorline
+set mouse=a
+set autochdir
+set fileencodings=utf-8,gbk,gb2313
+set termencoding=utf-8
+set encoding=utf-8
+set backspace=indent,eol,start
+set autoindent
+set undofile
+set undodir=$HOME/.vimundo
+set directory=$HOME/.vimswap
+set undolevels=1000
+set undoreload=10000
+set hlsearch
+set laststatus=2
+
+colorscheme pablo
+setlocal foldmethod=indent
+set nofoldenable
+set foldlevel=1
+syntax on
+
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html inoremap <div> <div><CR></div><ESC>O
+
+autocmd FileType c inoremap { {<CR>}<ESC>O
+autocmd FileType c inoremap /* /**/<ESC>hi
+
+autocmd FileType go inoremap { {<CR>}<ESC>O
+autocmd FileType go inoremap /* /**/<ESC>hi
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
+endif
+
+hi CursorLine ctermfg=NONE ctermbg=NONE cterm=underline
+hi Normal ctermfg=NONE ctermbg=NONE
+hi statusline ctermfg=6 ctermbg=NONE
+set statusline=
+set statusline+=\ %F
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=\ %m
+set statusline+=\ %=
+set statusline+=\ Line:\ %4l/%L[%3p%%]
+set statusline+=\ Col:%-3c
+set statusline+=\ %3b
+
+if has("cscope")
+        let s:dirs = split(getcwd(), "/")
+        while s:dirs != []
+                let s:path = "/" . join(s:dirs, "/")
+                if (filereadable(s:path . "/cscope.out"))
+                        execute "cs add " . s:path . "/cscope.out " . s:path . " -v"
+                        break
+                endif
+                let s:dirs = s:dirs[:-2]
+        endwhile
+
+        set csto=0  " Use cscope first, then ctags
+        set cst     " Only search cscope
+        set csverb  " Make cs verbose
+
+        nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+        nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+
+        set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
+endif
+

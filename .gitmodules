@@ -1,0 +1,6 @@
+[submodule "vim/pack/my-plugins/start/undotree"]
+	path = vim/pack/my-plugins/start/undotree
+	url = https://github.com/mbbill/undotree.git
+[submodule "vim/pack/my-plugins/start/editorconfig"]
+	path = vim/pack/my-plugins/start/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
