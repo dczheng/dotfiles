@@ -22,16 +22,24 @@ set undolevels=1000
 set undoreload=10000
 set hlsearch
 set laststatus=2
+set nofoldenable
+set foldlevel=1
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 colorscheme pablo
 setlocal foldmethod=indent
-set nofoldenable
-set foldlevel=1
 syntax on
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType html inoremap <div> <div><CR></div><ESC>O
+
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+autocmd FileType make set noexpandtab
+
+autocmd FileType yaml set tabstop=2 shiftwidth=2
 
 autocmd FileType c inoremap { {<CR>}<ESC>O
 autocmd FileType c inoremap /* /**/<ESC>hi
