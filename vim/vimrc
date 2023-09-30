@@ -41,6 +41,11 @@ autocmd FileType make set noexpandtab
 
 autocmd FileType yaml set tabstop=2 shiftwidth=2
 
+autocmd FileType javascript inoremap { {<CR>}<ESC>O
+autocmd FileType javascript inoremap /* /**/<ESC>hi
+autocmd FileType css inoremap { {<CR>}<ESC>O
+autocmd FileType css inoremap /* /**/<ESC>hi
+
 autocmd FileType c inoremap { {<CR>}<ESC>O
 autocmd FileType c inoremap /* /**/<ESC>hi
 
