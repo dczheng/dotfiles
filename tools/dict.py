@@ -22,8 +22,7 @@ def truncate(q):
     return q if size <= 20 else q[0:10] + str(size) + q[size - 10:size]
 
 
-def trans( q ):
-
+def translate( q ):
     data = {}
     data['from'] = 'EN'
     data['to'] = 'zh-CHS'
@@ -44,43 +43,11 @@ def trans( q ):
     req = urllib.request.Request(YOUDAO_URL, data=data, headers=headers)
     response = urllib.request.urlopen(req)
     r = json.loads( response.read().decode() )
-    if 'web' not in r.keys() and 'basic' not in r.keys():
+
+    if 'translation' not in r.keys():
         print( 'Can not find a translation for `%s`.'%q )
         sys.exit()
-
-    rr = [ None, None ]
-    if 'basic' in r.keys():
-        rr[0] = r['basic']
-
-    if 'web' in r.keys():
-        rr[1] = r['web']
-
-    return rr
-
-def my_print( data ):
-
-    sep_str = '=>' 
-    print( sep_str )
-
-    d = data[0]
-    if d is not None:
-        if 'explains' in d.keys():
-            for l in d['explains']:
-                print( l )
-            print( sep_str )
-
-        if 'wfs' in d.keys():
-            s = ''
-            for l in d['wfs']:
-                s += ':'.join( [l['wf']['name'], l['wf']['value']] ) + '\n'
-            print( s, end='' )
-            print( sep_str )
-
-    d = data[1]
-    if d is not None:
-        for l in d:
-            print( "%s: %s"%( l['key'], ','.join( l['value'] ) ) )
-        print( sep_str )
+    return r['translation']
 
 def main():
     global APP_KEY
@@ -93,17 +60,8 @@ def main():
         print( "Can not find the enviroment variables YOUDAO_APP_KEY or YOUDAO_APP_SECRET!" )
         sys.exit()
 
-    if sys.argv[1] == '-i':
-        while True:
-            t = input( ">>> " )
-            if t in 'Qq':
-                sys.exit()
-            r = trans( t )
-            my_print( r )
-
-    r = trans( ' '.join(sys.argv[1:]) )
-    my_print( r )
-
+    for x in translate(' '.join(sys.argv[1:])):
+        print(x)
 
 if __name__ == '__main__':
     main()
