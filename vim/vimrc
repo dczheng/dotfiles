@@ -28,7 +28,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-colorscheme pablo
+colorscheme koehler
 setlocal foldmethod=indent
 syntax on
 
