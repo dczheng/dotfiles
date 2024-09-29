@@ -5,7 +5,7 @@
 # created 2021-01-08
 #
 
-if [[ `cat /etc/hostname` = "debian" ]]
+if [[ `cat /etc/hostname` = "dczheng" ]]
 then
     net=`$ZCONFIG/tmux-scripts/net.sh`
     bat=`$ZCONFIG/tmux-scripts/bat.sh BAT0 AC`
