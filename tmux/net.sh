@@ -7,15 +7,13 @@
 
 NET_DIR="/sys/class/net"
 c=""
-for i in `ls $NET_DIR`
+for i in $(ls $NET_DIR)
 do
-    if [ $i == 'lo' ]
-    then
+    if [ $i == 'lo' ]; then
         continue
     fi
-    a=`cat $NET_DIR/$i/operstate`
-    if [ 'x'$a == 'xup' ]
-    then
+    a=$(cat $NET_DIR/$i/operstate)
+    if [ 'x'$a == 'xup' ]; then
         c="net"
     fi
 done
