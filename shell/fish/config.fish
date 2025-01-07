@@ -8,5 +8,5 @@ set -x OMP_NUM_THREADS 1
 set -x LC_ALL en_US.UTF-8
 
 #set -x GREP_COLOR "0;33"
-set -x PATH $ZCONFIG/tools $PATH
+set -xa PATH $ZCONFIG/tools
 add_env $MYLOCAL

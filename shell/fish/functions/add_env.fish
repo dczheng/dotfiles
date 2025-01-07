@@ -6,22 +6,22 @@ function add_env
     end
 
     if test -d $base/include
-        set -xg C_INCLUDE_PATH $base/include $C_INCLUDE_PATH
-        set -xg CPLUS_INCLUDE_PATH $base/include $CPLUS_INCLUDE_PATH
+        set -xga C_INCLUDE_PATH $base/include
+        set -xga CPLUS_INCLUDE_PATH $base/include
     end
 
     if test -d $base/lib
-        set -xg LD_LIBRARY_PATH $base/lib $LD_LIBRARY_PATH
-        set -xg LIBRARY_PATH $base/lib $LIBRARY_PATH
+        set -xga LD_LIBRARY_PATH $base/lib
+        set -xga LIBRARY_PATH $base/lib
     end
 
     if test -d $base/lib64
-        set -xg LD_LIBRARY_PATH $base/lib64 $LD_LIBRARY_PATH
-        set -xg LIBRARY_PATH $base/lib64 $LIBRARY_PATH
+        set -xga LD_LIBRARY_PATH $base/lib64
+        set -xga LIBRARY_PATH $base/lib64
     end
 
     if test -d $base/lib/pkgconfig
-        set -xg PKG_CONFIG_PATH $base/lib/pkgconfig $PKG_CONFIG_PATH
+        set -xga PKG_CONFIG_PATH $base/lib/pkgconfig
     end
 
 end
