@@ -10,4 +10,4 @@
 #[bluetooth]# exit
 
 bluetoothctl power on
-bluetoothctl connect E1:50:27:77:D7:0E
+bluetoothctl connect D4:B6:04:A2:3E:D6
