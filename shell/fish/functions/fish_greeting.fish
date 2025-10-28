@@ -3,7 +3,7 @@ function fish_greeting
     if status is-login
         clear 
         set sys (cat /etc/hostname)
-        cowsay.py "$USER (*.*) Welcome to $sys (*.*)"
+        cowsay.sh "$USER (*.*) Welcome to $sys (*.*)"
         #echo ">>>>>>>>>>>>>>>>>>>"
         #echo ">>>>>>>>>>>>>>>>>>>"
         #echo "Last Login:"
