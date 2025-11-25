@@ -10,5 +10,5 @@ set -xp PATH $HOME
 set -x TERM "xterm-256color"
 
 #set -x GREP_COLOR "0;33"
-set -xa PATH $ZCONFIG/tools
+set -xa PATH $ZCONFIG/bash
 add_env $MYLOCAL
