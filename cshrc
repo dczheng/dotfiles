@@ -1,5 +1,3 @@
-#!/bin/csh
-
 set Cyan="%{\033[0;36m%}"
 set BoldCyan="%{\033[1;36m%}"
 set Red="%{\033[0;31m%}"
@@ -21,36 +19,36 @@ alias l     ll
 setenv LANG "en_US.UTF-8"
 setenv EDITOR vi
 setenv PAGER less
-setenv PATH "$ZCONFIG/tools:$MYLOCAL/bin:$PATH"
+setenv PATH "$ZENV/tools:$ZLOCAL/bin:$PATH"
 
 if ( ! $?C_INCLUDE_PATH ) then
-    setenv C_INCLUDE_PATH "$ZCONFIG/include"
+    setenv C_INCLUDE_PATH "$ZENV/include"
 else
-    setenv C_INCLUDE_PATH "$ZCONFIG/include:$C_INCLUDE_PATH"
+    setenv C_INCLUDE_PATH "$ZENV/include:$C_INCLUDE_PATH"
 endif
 
 if ( ! $?CPLUS_INCLUDE_PATH ) then
-    setenv CPLUS_INCLUDE_PATH "$ZCONFIG/include"
+    setenv CPLUS_INCLUDE_PATH "$ZENV/include"
 else
-    setenv CPLUS_INCLUDE_PATH "$ZCONFIG/include:$CPLUS_INCLUDE_PATH"
+    setenv CPLUS_INCLUDE_PATH "$ZENV/include:$CPLUS_INCLUDE_PATH"
 endif
 
 if ( ! $?LIBRARY_PATH ) then
-    setenv LIBRARY_PATH            "$ZCONFIG/lib"
+    setenv LIBRARY_PATH            "$ZENV/lib"
 else
-    setenv LIBRARY_PATH            "$ZCONFIG/lib:$LIBRARY_PATH"
+    setenv LIBRARY_PATH            "$ZENV/lib:$LIBRARY_PATH"
 endif
 
 if ( ! $?LD_LIBRARY_PATH ) then
-    setenv LD_LIBRARY_PATH            "$ZCONFIG/lib"
+    setenv LD_LIBRARY_PATH            "$ZENV/lib"
 else
-    setenv LD_LIBRARY_PATH            "$ZCONFIG/lib:$LD_LIBRARY_PATH"
+    setenv LD_LIBRARY_PATH            "$ZENV/lib:$LD_LIBRARY_PATH"
 endif
 
 if ( ! $?PKG_CONFIG_PATH ) then
-    setenv PKG_CONFIG_PATH            "$ZCONFIG/lib"
+    setenv PKG_CONFIG_PATH            "$ZENV/lib"
 else
-    setenv PKG_CONFIG_PATH            "$ZCONFIG/share/pkgconfig:$PKG_CONFIG_PATH"
+    setenv PKG_CONFIG_PATH            "$ZENV/share/pkgconfig:$PKG_CONFIG_PATH"
 endif
 
 set prompt="${Cyan}%n@%m${Yellow}.%c >${Normal} "

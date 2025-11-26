@@ -1,9 +1,3 @@
-"
-" ~/.vimrc
-" dczheng
-" created 2019-07-25
-"
-
 set nocompatible
 set nospell
 set nu

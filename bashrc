@@ -54,7 +54,7 @@ ColorBrightCyan1="\033[1;96m"
 ColorBrightWhite0="\033[0;97m"
 ColorBrightWhite1="\033[1;97m"
 
-export ZCONFIG=$(dirname $(dirname "${BASH_SOURCE[0]}"))
+export ZENV=$(dirname "${BASH_SOURCE[0]}")
 export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
 export TERM="xterm-256color"
 export LANG=en_US.UTF-8
@@ -101,5 +101,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$ZCONFIG/bash:$PATH"
+export PATH="$ZENV/tools:$PATH"
 cowsay.sh "Welcome to $(cat /etc/hostname)"
