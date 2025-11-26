@@ -49,24 +49,3 @@ highlight CursorLine ctermfg=NONE ctermbg=NONE cterm=underline
 highlight Normal ctermfg=NONE ctermbg=NONE
 highlight statusline ctermfg=6 ctermbg=NONE
 set statusline=%F\ %y\ %r\ %m\ %=\%3p%%\ Row:\%-4l\ Col:%-4c\ Line:\ %L
-
-if has("cscope")
-        let s:dirs = split(getcwd(), "/")
-        while s:dirs != []
-                let s:path = "/" . join(s:dirs, "/")
-                if (filereadable(s:path . "/cscope.out"))
-                        execute "cs add " . s:path . "/cscope.out " . s:path . " -v"
-                        break
-                endif
-                let s:dirs = s:dirs[:-2]
-        endwhile
-
-        set csto=0  " Use cscope first, then ctags
-        set cst     " Only search cscope
-        set csverb  " Make cs verbose
-
-        nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-        nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-
-        set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
-endif
