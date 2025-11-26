@@ -16,17 +16,18 @@ set foldlevel=1
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set viminfo+=n~/.cache/vim/info
 
 set undofile
 set undolevels=1000
 set undoreload=10000
-let s:undodir = expand('~/.vim/undo')
+let s:undodir = expand('~/.cache/vim/undo')
 if !isdirectory(s:undodir)
     call mkdir(s:undodir, "p", 0700)
 endif
 let &undodir = s:undodir
 
-let s:swapdir = expand('~/.vim/swap')
+let s:swapdir = expand('~/.cache/vim/swap')
 if !isdirectory(s:swapdir)
     call mkdir(s:swapdir, "p", 0700)
 endif
@@ -85,4 +86,3 @@ if has("cscope")
 
         set cscopequickfix=s-,c-,d-,i-,t-,e-,g-
 endif
-
