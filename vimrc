@@ -39,32 +39,22 @@ syntax on
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType html inoremap <div> <div><CR></div><ESC>O
-
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
 autocmd FileType make set noexpandtab
-
 autocmd FileType yaml set tabstop=2 shiftwidth=2
+autocmd BufReadPost * {
+    if line("'\"") > 0 && line("'\"") <= line("$")
+        exe "normal! g'\""
+    endif
+}
 
 inoremap { {<CR>}<ESC>O
 inoremap /* /**/<ESC>hi
 
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
-endif
-
-hi CursorLine ctermfg=NONE ctermbg=NONE cterm=underline
-hi Normal ctermfg=NONE ctermbg=NONE
-hi statusline ctermfg=6 ctermbg=NONE
-set statusline=
-set statusline+=\ %F
-set statusline+=\ %y
-set statusline+=\ %r
-set statusline+=\ %m
-set statusline+=\ %=
-set statusline+=\ Line:\ %4l/%L[%3p%%]
-set statusline+=\ Col:%-3c
-set statusline+=\ %3b
+highlight CursorLine ctermfg=NONE ctermbg=NONE cterm=underline
+highlight Normal ctermfg=NONE ctermbg=NONE
+highlight statusline ctermfg=6 ctermbg=NONE
+set statusline=%F\ %y\ %r\ %m\ %=\%3p%%\ Row:\%-4l\ Col:%-4c\ Line:\ %L
 
 if has("cscope")
         let s:dirs = split(getcwd(), "/")
