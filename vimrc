@@ -21,17 +21,11 @@ set viminfo+=n~/.cache/vim/info
 set undofile
 set undolevels=1000
 set undoreload=10000
-let s:undodir = expand('~/.cache/vim/undo')
-if !isdirectory(s:undodir)
-    call mkdir(s:undodir, "p", 0700)
-endif
-let &undodir = s:undodir
+set undodir=~/.cache/vim/undo
+call mkdir(&undodir, "p", 0700)
 
-let s:swapdir = expand('~/.cache/vim/swap')
-if !isdirectory(s:swapdir)
-    call mkdir(s:swapdir, "p", 0700)
-endif
-let &directory = s:swapdir
+set directory=~/.cache/vim/swap
+call mkdir(&directory, "p", 0700)
 
 colorscheme koehler
 setlocal foldmethod=indent
