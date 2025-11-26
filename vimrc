@@ -20,17 +20,17 @@ set expandtab
 set undofile
 set undolevels=1000
 set undoreload=10000
-let _undodir = expand('~/.vim/undo')
-if !isdirectory(_undodir)
-    call mkdir(_undodir, "p", 0700)
+let s:undodir = expand('~/.vim/undo')
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "p", 0700)
 endif
-let &undodir = _undodir
+let &undodir = s:undodir
 
-let _swapdir = expand('~/.vim/swap')
-if !isdirectory(_swapdir)
-    call mkdir(_swapdir, "p", 0700)
+let s:swapdir = expand('~/.vim/swap')
+if !isdirectory(s:swapdir)
+    call mkdir(s:swapdir, "p", 0700)
 endif
-let &directory = _swapdir
+let &directory = s:swapdir
 
 colorscheme koehler
 setlocal foldmethod=indent
