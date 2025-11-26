@@ -16,6 +16,10 @@ pkg_env() {
     if [ -d "$1/lib/pkgconfig" ]; then
         export PKG_CONFIG_PATH="$1/lib/pkgconfig:$PKG_CONFIG_PATH"
     fi
+
+    if [ -d "$1/share/man" ]; then
+        export MANPATH="$1/share/man:$MANPATH"
+    fi
 }
 
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
@@ -25,12 +29,17 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$HOME:$PATH"
 export NCPU=$(cat /proc/cpuinfo | grep processor -c)
+export EDITOR="vim"
+export HISTIGNORE="cd:ls:ll"
 
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias cd..="cd .."
+alias cdz="cd $ZENV"
 alias vi="vim"
+alias l="ls"
+alias s="ls"
 alias ll="ls -lh"
 alias la="ls -lAh"
 alias laa="ls -lah"
@@ -42,6 +51,10 @@ alias scp="scp -r "
 alias gitrc="git add -u && git commit --amend"
 alias zenv=". ~/.bashrc"
 
+if [[ $- != *i* ]]; then
+    return
+fi
+
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
 bind "TAB: menu-complete"
@@ -51,10 +64,6 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
   . /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
-fi
-
-if [[ $- != *i* ]]; then
-    return
 fi
 
 if [ -x /usr/bin/dircolors ]; then
@@ -70,4 +79,7 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 export PS1="\[\e[0;32m\]\u@\h \[\e[0;93m\]\W >\[\e[0m\] "
-cowsay.sh "Welcome to $HOSTNAME"
+
+if shopt -q login_shell; then
+    cowsay.sh "Welcome to $HOSTNAME"
+fi
