@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $(cat /etc/hostname) = "dczheng" ]; then
+if [ $HOSTNAME = "dczheng" ]; then
     capacity=$(cat /sys/class/power_supply/BAT0/capacity)
     if [ $capacity -lt 10 ]; then
         color="red"

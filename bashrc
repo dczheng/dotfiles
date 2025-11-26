@@ -69,4 +69,4 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 export PS1="\[\e[0;32m\]\u@\h.\[\e[0;93m\]\W >\[\e[0m\] "
-cowsay.sh "Welcome to $(cat /etc/hostname)"
+cowsay.sh "Welcome to $HOSTNAME"
