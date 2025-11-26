@@ -1,3 +1,0 @@
-[submodule "vim/pack/my-plugins/start/undotree"]
-	path = vim/pack/my-plugins/start/undotree
-	url = https://github.com/mbbill/undotree.git
