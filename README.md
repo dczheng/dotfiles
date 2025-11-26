@@ -1,1 +1,1 @@
-# .zconfig
+# zenv
