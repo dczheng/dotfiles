@@ -1,4 +1,4 @@
-add_env() {
+pkg_env() {
     if [ -d "$1/bin" ]; then
         export PATH="$1/bin:$PATH"
     fi
@@ -19,6 +19,7 @@ add_env() {
 }
 
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
+export PATH="$ZENV/tools:$PATH"
 export TERM="xterm-256color"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -69,5 +70,4 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="$ZENV/tools:$PATH"
 cowsay.sh "Welcome to $(cat /etc/hostname)"
