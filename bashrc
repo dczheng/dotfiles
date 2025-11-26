@@ -25,7 +25,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$HOME:$PATH"
 export NCPU=$(cat /proc/cpuinfo | grep processor -c)
-export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
 
 alias ..="cd ../"
 alias ...="cd ../../"
@@ -57,12 +56,17 @@ if [[ $- != *i* ]]; then
     return
 fi
 
+if [ -x /usr/bin/dircolors ]; then
+    eval "$(dircolors -b)"
+    alias ls="ls --color=auto"
+    alias grep="grep --color=auto"
+fi
+
 shopt -s checkwinsize
 shopt -s histappend
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
 
-alias ls="ls --color"
 export PS1="\[\e[0;32m\]\u@\h.\[\e[0;93m\]\W >\[\e[0m\] "
 cowsay.sh "Welcome to $(cat /etc/hostname)"
