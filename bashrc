@@ -18,42 +18,6 @@ add_env() {
     fi
 }
 
-ColorNormal="\033[0m"
-
-ColorBlack0="\033[0;30m"
-ColorBlack1="\033[1;30m"
-ColorRed0="\033[0;31m"
-ColorRed1="\033[1;31m"
-ColorGreen0="\033[0;32m"
-ColorGreen1="\033[1;32m"
-ColorYellow0="\033[0;33m"
-ColorYellow1="\033[1;33m"
-ColorBlue0="\033[0;34m"
-ColorBlue1="\033[1;34m"
-ColorMagenta0="\033[0;35m"
-ColorMagenta1="\033[1;35m"
-ColorCYAN0="\033[0;36m"
-ColorCYAN1="\033[1;36m"
-ColorWhite0="\033[0;37m"
-ColorWhite1="\033[1;37m"
-
-ColorBrightBlack0="\033[0;90m"
-ColorBrightBlack1="\033[1;90m"
-ColorBrightRed0="\033[0;91m"
-ColorBrightRed1="\033[1;91m"
-ColorBrightGreen0="\033[0;92m"
-ColorBrightGreen1="\033[1;92m"
-ColorBrightYellow0="\033[0;93m"
-ColorBrightYellow1="\033[1;93m"
-ColorBrightBlue0="\033[0;94m"
-ColorBrightBlue1="\033[1;94m"
-ColorBrightMagenta0="\033[0;95m"
-ColorBrightMagenta1="\033[1;95m"
-ColorBrightCyan0="\033[0;96m"
-ColorBrightCyan1="\033[1;96m"
-ColorBrightWhite0="\033[0;97m"
-ColorBrightWhite1="\033[1;97m"
-
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
 export TERM="xterm-256color"
 export LANG=en_US.UTF-8
@@ -95,7 +59,7 @@ HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
 
-export PS1="\[$ColorGreen0\]\u@\h.\[$ColorBrightYellow0\]\W >\[$ColorNormal\] "
+export PS1="\[\e[0;32m\]\u@\h.\[\e[0;93m\]\W >\[\e[0m\] "
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
