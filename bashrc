@@ -73,6 +73,8 @@ alias df="df -h"
 alias tmux-enter="tmux new -A -s "
 alias sudo="sudo "
 alias make="make -j$(cat /proc/cpuinfo | grep processor -c) "
+alias scp="scp -r "
+alias gitrc="git add -u && git commit --amend"
 
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
