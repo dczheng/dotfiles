@@ -1,6 +1,10 @@
 #!/bin/bash
 
-if [ $HOSTNAME = "dczheng" ]; then
+A="/sys/class/power_supply/BAT0/capacity"
+B="/sys/class/power_supply/AC/online"
+
+bat="-"
+if [ -e $A ] && [ -e $B ]; then
     capacity=$(cat /sys/class/power_supply/BAT0/capacity)
     if [ $capacity -lt 10 ]; then
         color="red"
@@ -10,18 +14,27 @@ if [ $HOSTNAME = "dczheng" ]; then
         ac_online="+"
     fi
     bat="#[fg=$color]$ac_online$capacity%"
-    
-    net=""
-    NET_DIR="/sys/class/net"
-    for i in $(ls $NET_DIR); do
+fi
+
+net="offline"
+A="/sys/class/net"
+if [ -e $A ]; then
+    for i in $(ls $A); do
         if [ $i == 'lo' ]; then
             continue
         fi
-        a=$(cat $NET_DIR/$i/operstate)
-        if [ 'x'$a == 'xup' ]; then
-           net="net"
+
+        s=$(cat $A/$i/operstate)
+        if [ -z $s ]; then
+            continue
         fi
+
+        if [ $s = "up" ]; then
+           net="online"
+           break
+        fi
+
     done
-    
-    echo -en "#[fg=green]$net $bat#[fg=green]"
 fi
+
+echo -en "#[fg=green]$net $bat#[fg=green]"
