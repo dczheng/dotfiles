@@ -11,4 +11,4 @@ echo $l
 echo $a
 echo $l
 
-cat $(dirname $(realpath $0))"/data/pig"$((RANDOM % 4 + 1)) 
+cat $(dirname $(realpath $0))"/data/pig"$((RANDOM % 4 + 1))
