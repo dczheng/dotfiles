@@ -18,14 +18,15 @@ set shiftwidth=4
 set expandtab
 set viminfo+=n~/.cache/vim/info
 
+set nobackup
+set noswapfile
+set nowritebackup
+
 set undofile
 set undolevels=1000
 set undoreload=10000
 set undodir=~/.cache/vim/undo
 call mkdir(&undodir, "p", 0700)
-
-set directory=~/.cache/vim/swap
-call mkdir(&directory, "p", 0700)
 
 colorscheme koehler
 setlocal foldmethod=indent
