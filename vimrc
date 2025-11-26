@@ -9,11 +9,6 @@ set termencoding=utf-8
 set encoding=utf-8
 set backspace=indent,eol,start
 set autoindent
-set undofile
-set undodir=$HOME/.vimundo
-set directory=$HOME/.vimswap
-set undolevels=1000
-set undoreload=10000
 set hlsearch
 set laststatus=2
 set nofoldenable
@@ -21,6 +16,21 @@ set foldlevel=1
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+set undofile
+set undolevels=1000
+set undoreload=10000
+let _undodir = expand('~/.vim/undo')
+if !isdirectory(_undodir)
+    call mkdir(_undodir, "p", 0700)
+endif
+let &undodir = _undodir
+
+let _swapdir = expand('~/.vim/swap')
+if !isdirectory(_swapdir)
+    call mkdir(_swapdir, "p", 0700)
+endif
+let &directory = _swapdir
 
 colorscheme koehler
 setlocal foldmethod=indent
