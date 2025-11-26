@@ -40,6 +40,7 @@ alias sudo="sudo "
 alias make="make -j$NCPU "
 alias scp="scp -r "
 alias gitrc="git add -u && git commit --amend"
+alias zenv=". ~/.bashrc"
 
 bind "set show-all-if-ambiguous on"
 bind "set menu-complete-display-prefix on"
