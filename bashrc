@@ -55,11 +55,11 @@ ColorBrightWhite0="\033[0;97m"
 ColorBrightWhite1="\033[1;97m"
 
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
-export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
 export TERM="xterm-256color"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$HOME:$PATH"
+export NCPU=$(cat /proc/cpuinfo | grep processor -c)
 
 alias vi="vim"
 alias ll="ls -lh"
@@ -72,7 +72,7 @@ alias cd..="cd .."
 alias df="df -h"
 alias tmux-enter="tmux new -A -s "
 alias sudo="sudo "
-alias make="make -j$(cat /proc/cpuinfo | grep processor -c) "
+alias make="make -j$NCPU "
 alias scp="scp -r "
 alias gitrc="git add -u && git commit --amend"
 
@@ -86,13 +86,15 @@ if [[ $- != *i* ]]; then
     return
 fi
 
+export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
+alias ls="ls --color"
+
 shopt -s checkwinsize
 shopt -s histappend
 HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
 
-alias ls="ls --color"
 export PS1="\[$ColorGreen0\]\u@\h.\[$ColorBrightYellow0\]\W >\[$ColorNormal\] "
 
 if ! shopt -oq posix; then
