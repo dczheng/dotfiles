@@ -25,15 +25,16 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$HOME:$PATH"
 export NCPU=$(cat /proc/cpuinfo | grep processor -c)
+export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
 
-alias vi="vim"
-alias ll="ls -lh"
-alias la="ls -lAh"
-alias laa="ls -lah"
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias cd..="cd .."
+alias vi="vim"
+alias ll="ls -lh"
+alias la="ls -lAh"
+alias laa="ls -lah"
 alias df="df -h"
 alias tmux-enter="tmux new -A -s "
 alias sudo="sudo "
@@ -46,13 +47,15 @@ bind "set menu-complete-display-prefix on"
 bind "TAB: menu-complete"
 bind "set colored-completion-prefix on"
 bind "set colored-stats on"
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
 
 if [[ $- != *i* ]]; then
     return
 fi
-
-export LSCOLORS="Excxaxaxdxaxaxaxaxaxax"
-alias ls="ls --color"
 
 shopt -s checkwinsize
 shopt -s histappend
@@ -60,14 +63,6 @@ HISTCONTROL=ignoreboth
 HISTSIZE=10000
 HISTFILESIZE=20000
 
+alias ls="ls --color"
 export PS1="\[\e[0;32m\]\u@\h.\[\e[0;93m\]\W >\[\e[0m\] "
-
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
 cowsay.sh "Welcome to $(cat /etc/hostname)"
