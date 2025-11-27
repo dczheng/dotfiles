@@ -33,6 +33,7 @@ export EDITOR="vim"
 export HISTIGNORE="cd:ls:ll"
 export CCACHE_DIR="$HOME/.cache/ccache"
 export CCACHE_SIZE=4294967296
+export LESSHISTFILE="-"
 
 alias ..="cd ../"
 alias ...="cd ../../"
