@@ -39,7 +39,7 @@ autocmd FileType make set noexpandtab
 autocmd FileType yaml set tabstop=2 shiftwidth=2
 autocmd BufReadPost * {
     if line("'\"") > 0 && line("'\"") <= line("$")
-        exe "normal! g'\""
+        exe "normal! g'\"zz"
     endif
 }
 
