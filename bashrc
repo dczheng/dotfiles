@@ -31,12 +31,15 @@ export PATH="$HOME:$PATH"
 export NCPU=$(cat /proc/cpuinfo | grep processor -c)
 export EDITOR="vim"
 export HISTIGNORE="cd:ls:ll"
+export CCACHE_DIR="$HOME/.cache/ccache"
+export CCACHE_SIZE=4294967296
 
 alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias cd..="cd .."
 alias cdz="cd $ZENV"
+alias cdl="cd $HOME/.local"
 alias vi="vim"
 alias l="ls"
 alias s="ls"
@@ -49,7 +52,7 @@ alias sudo="sudo "
 alias make="make -j$NCPU "
 alias scp="scp -r "
 alias gitrc="git add -u && git commit --amend"
-alias zenv=". ~/.bashrc"
+alias zenv=". ${HOME}/.bashrc"
 
 if [[ $- != *i* ]]; then
     return
