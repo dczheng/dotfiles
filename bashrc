@@ -20,6 +20,12 @@ pkg_env() {
     if [ -d "$1/share/man" ]; then
         export MANPATH="$1/share/man:$MANPATH"
     fi
+
+    if [ -n "$PYTHONVERSION" ]; then
+        if [ -d "$1/lib/python$PYTHONVERSION/dist-packages" ]; then
+            export PYTHONPATH="$1/share/man:$PYTHONPATH"
+        fi
+    fi
 }
 
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
@@ -54,6 +60,13 @@ alias make="make -j$NCPU"
 alias scp="scp -r"
 alias gitrc="git add -u && git commit --amend"
 alias zenv=". ${HOME}/.bashrc"
+alias im="nomacs"
+alias pdf="chromium"
+alias gitstatus="git status"
+alias gitpush="git push"
+alias gitadd="git add"
+alias gitdiff="git diff"
+alias sys="sudo systemctl"
 
 if [[ $- != *i* ]]; then
     return
