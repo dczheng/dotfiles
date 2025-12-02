@@ -30,7 +30,6 @@ pkg_env() {
 
 export ZENV=$(dirname "${BASH_SOURCE[0]}")
 export PATH="$ZENV/tools:$PATH"
-export TERM="xterm-256color"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export PATH="$HOME:$PATH"
